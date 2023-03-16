@@ -16,11 +16,13 @@ public class Client {
             scanner = new Scanner(System.in);
 
             while (true) {
+                System.out.println("--------------------------------------------");
                 System.out.println("Choose an option:");
                 System.out.println("1. GET all pets");
                 System.out.println("2. GET pets by species");
                 System.out.println("3. POST pets");
                 System.out.println("4. Quit");
+                System.out.println("--------------------------------------------");
 
                 int option = scanner.nextInt();
                 scanner.nextLine(); // Consume newline character
@@ -32,7 +34,9 @@ public class Client {
                 switch (option) {
                     case 1 -> {
                         // GET all pets
-                        String getRequest = "GET / HTTP/1.1\r\n\r\n";
+                        String getRequest = "GET / HTTP/1.1\r\n";
+                        getRequest += "Connection: keep-alive\r\n"; // Add this line
+                        getRequest += "\r\n";
                         bufferedWriter.write(getRequest);
                         bufferedWriter.flush();
                     }
@@ -40,7 +44,9 @@ public class Client {
                         // GET pets by species
                         System.out.println("Enter species:");
                         String species = scanner.nextLine();
-                        String getRequest = "GET /pets?species=" + species + " HTTP/1.1\r\n\r\n";
+                        String getRequest = "GET /pets?species=" + species + " HTTP/1.1\r\n";
+                        getRequest += "Connection: keep-alive\r\n"; // Add this line
+                        getRequest += "\r\n";
                         bufferedWriter.write(getRequest);
                         bufferedWriter.flush();
                     }
@@ -63,7 +69,7 @@ public class Client {
                         String postRequest = "POST / HTTP/1.1\r\n";
                         postRequest += "Content-Type: application/json\r\n";
                         postRequest += "Content-Length: " + jsonInput.length() + "\r\n";
-                        postRequest += "Connection: close\r\n";
+                        postRequest += "Connection: keep-alive\r\n"; // Change this line to "Connection: keep-alive"
                         postRequest += "\r\n";
                         postRequest += jsonInput;
                         bufferedWriter.write(postRequest);
