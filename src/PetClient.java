@@ -44,7 +44,8 @@ public class PetClient {
         return readResponse();
     }
 
-    private String readResponse() throws IOException {
+
+    String readResponse() throws IOException {
         String line;
         StringBuilder response = new StringBuilder();
         int contentLength = -1;
