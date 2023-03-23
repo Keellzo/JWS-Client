@@ -47,6 +47,5 @@ class PetClientTest {
         String response = petClient.postPet(name, species, breed, age, gender);
         assertNotNull(response, "The response should not be null");
 
-
     }
 }
