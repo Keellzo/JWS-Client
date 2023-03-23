@@ -23,8 +23,6 @@ class PetClientTest {
     void testGetAllPets() throws IOException {
         String response = petClient.getAllPets();
         assertNotNull(response, "The response should not be null");
-
-
     }
 
     @Test
@@ -32,8 +30,6 @@ class PetClientTest {
         String species = "dog";
         String response = petClient.getPetsBySpecies(species);
         assertNotNull(response, "The response should not be null");
-
-
     }
 
     @Test
